@@ -1,38 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Webpage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website Title</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #f4f4f4;
+      padding: 10px 0;
+      text-align: center;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px 20px;
+    }
+    nav a:hover {
+      background-color: #ddd;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Simple Webpage</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#section1">Section 1</a></li>
-            <li><a href="#section2">Section 2</a></li>
-            <li><a href="#section3">Section 3</a></li>
-        </ul>
-    </nav>
-    <main>
-        <section id="section1">
-            <h2>Section 1</h2>
-            <p>This is the first section of my webpage. It contains some introductory content.</p>
-        </section>
-        <section id="section2">
-            <h2>Section 2</h2>
-            <p>This is the second section of my webpage. It may contain more detailed information.</p>
-        </section>
-        <section id="section3">
-            <h2>Section 3</h2>
-            <p>This is the third section of my webpage. It might include additional content or contact information.</p>
-            <img src="example.jpg" alt="Example Image">
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 My Simple Webpage. All rights reserved.</p>
-    </footer>
+  <header>
+    <h1 id="pageTitle">TMWF's Realm</h1>
+  </header>
+  <nav>
+    <a href="#" onclick="loadPage('page1.html', 'Technology')">Technology</a>
+    <a href="#" onclick="loadPage('page2.html', 'Games')">Games</a>
+    <a href="#" onclick="loadPage('page3.html', 'Home')">Home</a>
+    <a href="#" onclick="loadPage('page4.html', 'Life')">Life</a>
+    <a href="#" onclick="loadPage('page5.html', 'Other')">Other</a>
+  </nav>
+  <div class="container" id="pageContent">
+    <!-- Your content for the home page goes here -->
+    <p>Welcome to your website! This is the home page content.</p>
+  </div>
+
+  <script>
+    function loadPage(pageURL, pageTitle) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("pageContent").innerHTML = this.responseText;
+          document.getElementById("pageTitle").innerHTML = pageTitle;
+        }
+      };
+      xhttp.open("GET", pageURL, true);
+      xhttp.send();
+    }
+  </script>
 </body>
 </html>
