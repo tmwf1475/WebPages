@@ -41,15 +41,34 @@
     <h1 id="pageTitle">TMWF's Realm</h1>
   </header>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="page1.html">Technology</a>
-    <a href="page2.html">Games</a>
-    <a href="page3.html">Life</a>
-    <a href="page4.html">Other</a>
+    <a href="#" onclick="loadHomePage()">Home</a>
+    <a href="#" onclick="loadPage('page1.html', 'Technology')">Technology</a>
+    <a href="#" onclick="loadPage('page2.html', 'Games')">Games</a>
+    <a href="#" onclick="loadPage('page3.html', 'Life')">Life</a>
+    <a href="#" onclick="loadPage('page4.html', 'Other')">Other</a>
   </nav>
   <div class="container" id="pageContent">
     <!-- Your content for the home page goes here -->
     <p>Welcome to your website! This is the home page content.</p>
   </div>
+
+  <script>
+    function loadHomePage() {
+      document.getElementById("pageContent").innerHTML = '<p>Welcome to your website! This is the home page content.</p>';
+      document.getElementById("pageTitle").innerHTML = "TMWF's Realm";
+    }
+
+    function loadPage(pageURL, pageTitle) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("pageContent").innerHTML = this.responseText;
+          document.getElementById("pageTitle").innerHTML = pageTitle;
+        }
+      };
+      xhttp.open("GET", pageURL, true);
+      xhttp.send();
+    }
+  </script>
 </body>
 </html>
